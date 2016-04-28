@@ -39,7 +39,7 @@
 		$('#subForm').dataform({
 			url: 'http://localhost:8184/timeline/UserAction.add.do',
 			rules: {
-				id: ['#', '请输入5到10位用户编号', '#remote', 'http://localhost:8184/timeline/UserAction.add.do', 'FAPStatus', '0'],
+				id: ['#', '请输入用户编号', '#remote', 'http://localhost:8184/timeline/UserAction.add.do', 'FAPStatus', '0'],
 				name: ['#', '您输入的内容不合法', '#rangelength', 4, 10],
 				phone: ['#','请输入手机号码','#telephone']
 			},
