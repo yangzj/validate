@@ -1,0 +1,51 @@
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">       
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">       
+<META HTTP-EQUIV="Expires" CONTENT="0"> 
+<META charset="utf-8">
+
+<div style="width:500px; padding-bottom:20px;" class="bb_box">
+	<form id="subForm" class="addForm" >
+		<div style="margin:auto;width:95%; margin-top:20px;" class="win-content">	
+			<div>
+				<span class="item_tit">编号</span>
+				<input type="text" name="number" placeholder="请输入5到10位用户编号" value="">
+			</div>
+			<div style="margin-bottom: 10px">
+				<span class="item_tit">昵称</span>
+				<input type="text" name="name" placeholder="请输入用户昵称" value="">
+			</div>
+			<div style="margin-bottom: 10px">
+				<span class="item_tit">手机</span>
+				<textarea name="phone" placeholder="请输入手机号码"></textarea>
+			</div>
+		</div>
+		<div style="height:40px;width:84%; margin:0 auto;">
+			<div style="float:right;">
+				<input class="button small" id="add" value="确定添加" type="button" />
+			</div>
+		</div>
+	</form>
+</div>
+<style>
+	.bb_box input[type="text"]{width:75%;height:28px;color:#333;border:1px solid #ccc;padding:0px 5px 0px 5px; font-size: 14px;}
+	.bb_box textarea{border:1px solid #ccc;width:75%;height:100px;resize:none;padding:5px 5px 5px 5px;}
+	.bb_box select{border:1px solid #ccc;height:30px;line-height:30px;}
+	.bb_box option{height:30px;line-height:30px;}
+	.bb_box .item_tit{display:inline-block;width:70px;font-weight:bold;text-align:right;margin-right:10px;float:left; line-height: 28px; font-size: 14px;}
+	.layui-layer-page .layui-layer-content{overflow: inherit;}
+</style>
+<script>
+	$('#add').click(function(){
+		$('#subForm').dataform({
+			url: 'http://localhost:8184/timeline/UserAction.add.do',
+			rules: {
+				id: ['#', '请输入5到10位用户编号', '#remote', 'http://localhost:8184/timeline/UserAction.add.do', 'FAPStatus', '0'],
+				name: ['#', '您输入的内容不合法', '#rangelength', 4, 10],
+				phone: ['#','请输入手机号码','#telephone']
+			},
+			proxy: function(url, data) {
+				layer.alert('恭喜您，验证成功啦<br />请求url：'+url+';请求数据data：'+data,{icon: 1, shade: 0.5});
+			}
+		});
+	});
+</script>
